@@ -1,7 +1,6 @@
 name: build
 
 on: [push, pull_request]
-
 jobs:
   coverage:
     name: Test and publish test coverage
