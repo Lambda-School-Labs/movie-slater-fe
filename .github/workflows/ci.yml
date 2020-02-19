@@ -2,7 +2,7 @@ name: build
 
 on: [push, pull_request]
 paths: 
-  - movie-knight/
+  - movie-knight/*
 jobs:
   coverage:
     name: Test and publish test coverage
