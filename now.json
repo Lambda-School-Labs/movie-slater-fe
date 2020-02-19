@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "name": "movie-knight",
+    "builds": [
+        {
+            "src": "movie-knight/package.json",
+            "use": "@now/static-build",
+            "config": {
+                "distDir": "coverage"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "movie-knight/$1"
+        }
+    ]
+}
