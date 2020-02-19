@@ -16,7 +16,7 @@ jobs:
           CI: true
           CC_TEST_REPORTER_ID: b33924e219cbba656533756aac95e29b47b60a29e3040262e08bef22d9583b55
         with:
-          coverageCommand:  cc-test-reporter after-build --prefix /movie-knight 
+          coverageCommand:  npm run coverage 
 
 
 # name: build

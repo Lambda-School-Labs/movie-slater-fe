@@ -1,0 +1,19 @@
+{
+  "name": "movie-slater-fe",
+  "version": "1.0.0",
+  "description": "[![Maintainability](https://api.codeclimate.com/v1/badges/ce05228cbf7034db68a1/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/movie-slater-fe/maintainability)\r [![Test Coverage](https://api.codeclimate.com/v1/badges/ce05228cbf7034db68a1/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/movie-slater-fe/test_coverage)\r 🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "cc-test-reporter after-build --prefix /movie-knight"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lambda-School-Labs/movie-slater-fe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lambda-School-Labs/movie-slater-fe/issues"
+  },
+  "homepage": "https://github.com/Lambda-School-Labs/movie-slater-fe#readme"
+}
