@@ -20,7 +20,7 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: npm run coverage --prefix /home/runner/work/movie-slater-fe/movie-slater-fe/movie-knight
-          coverageLocations: "movie-knight"
+          coverageLocations: "movie-knight/coverage/lcov.info:lcov"
 
       
         
