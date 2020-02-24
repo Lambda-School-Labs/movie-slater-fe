@@ -203,8 +203,8 @@
 }
 
 .results-btn {
-  background-color: $disabled_action_button;
-  color: $disabled_text;
+  background-color: $enabled_action_button;
+  color: rgba(255, 255, 255, 0.87);
   margin: 5px 0px;
   border: none;
   border-radius: 7px;
@@ -222,12 +222,17 @@
 
 .menu-filter {
   position: absolute;
-  width: 49%;
+  width: 52%;
   height: 66%;
+  margin-top: -180px;
+  padding: 214px 0px 0px 0px;
+  margin-left: -1px;
 
   @media screen and (min-width: 800px) {
     width: 20%;
     height: 54%;
+    margin: 20px 0 0 0;
+    padding: 0;
   }
 
   .movie-review,
@@ -452,8 +457,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 // See Results Button //
 .results-btn {
-  background-color: $disabled_action_button;
-  color: $disabled_text;
+  background-color: $enabled_action_button;
+  color: rgba(255, 255, 255, 0.87);
   margin: 0 auto;
   margin-top: 40px;
   border: none;
