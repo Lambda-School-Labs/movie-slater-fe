@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import './showtime.scss'
-import axio from 'axios'
+import ProgressBar from './ProgressBar';
 
 
 
@@ -44,6 +44,9 @@ const Showtime = props => {
                     </div>
                 ))
             }
+            <div>
+                <ProgressBar/>
+            </div>
         </div>
     )
 }
