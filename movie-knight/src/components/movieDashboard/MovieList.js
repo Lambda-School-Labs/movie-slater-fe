@@ -47,7 +47,7 @@ export function MovieList(props) {
       <SearchForm searchParam={searchParam} setSearchParam={setSearchParam} />
       <div className="filter-max">
         <FilterMenu setFilter={setFilter} filters={filters} />
-        {props.movieSelect.length == 3 ? (
+        {props.movieSelect.length === 3 ? (
           <p className="max-num">Max Number</p>
         ) : (
             <p className="max-num"></p>
@@ -57,7 +57,7 @@ export function MovieList(props) {
         <Loading />
       ) : (
 
-          <div className="movie-list" getByTestId="movielist" onClick={toggleMenu}>
+          <div className="movie-list"  onClick={toggleMenu}>
             {movies
               .filter(movie => {
                 return (
@@ -76,20 +76,20 @@ export function MovieList(props) {
               })
               .sort(function (a, b) {
                 if (filters.filter === "recent") {
-                  var dateA = new Date(a.releaseDate),
-                    dateB = new Date(b.releaseDate);
-                  return dateB - dateA;
+                  var recentA = new Date(a.releaseDate),
+                    recentB = new Date(b.releaseDate);
+                  return recentB - recentA;
                 } else if (filters.filter === "old") {
                   var dateA = new Date(a.releaseDate),
                     dateB = new Date(b.releaseDate);
                   return dateA - dateB;
                 } else if (filters.filter === "az") {
-                  var nameA = a.title.toLowerCase(),
-                    nameB = b.title.toLowerCase();
-                  if (nameA < nameB)
+                  var aToz1 = a.title.toLowerCase(),
+                    aToz2 = b.title.toLowerCase();
+                  if (aToz1 < aToz2)
                     //sort string ascending
                     return -1;
-                  if (nameA > nameB) return 1;
+                  if (aToz1 > aToz2) return 1;
                   return 0;
                 } else if (filters.filter === "za") {
                   var nameA = a.title.toLowerCase(),

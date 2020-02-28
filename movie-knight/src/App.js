@@ -7,7 +7,7 @@ import Signup from "./components/auth/Signup";
 import Dashboard from "./components/movieDashboard/Dashboard";
 import Nav from "./components/progress-nav-bars/Nav";
 import MovieDetails from "./components/movieDetails/MovieDetails.js";
-import PrivateRoute from "./components/PrivateRoute";
+// import PrivateRoute from "./components/PrivateRoute";
 import DataPicker from "./components/date-time/DatePicker";
 import TimePicker from "./components/date-time/TimePicker";
 import SeatChart from "./components/seats/SeatChart";

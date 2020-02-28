@@ -40,7 +40,7 @@ function Profile(props) {
         let file = event.target.files[0];
         setImage(file);
         let reader = new FileReader();
-        var url = reader.readAsDataURL(file);
+        // var url = reader.readAsDataURL(file);
         reader.onloadend = function (e) {
             setPreview(reader.result)
         }.bind(reader)
@@ -135,7 +135,7 @@ function Profile(props) {
 
                             <p>{`${theatre.street}, ${theatre.city}, ${theatre.state}, ${theatre.zip}`}</p></div>
                         <div>
-                            <img src={redheart} onClick={(e) => delFromFavorite(e, theatre.theatreId)} />
+                            <img src={redheart} alt='red-heart' onClick={(e) => delFromFavorite(e, theatre.theatreId)} />
 
 
                         </div>

@@ -70,7 +70,7 @@ export const MovieDetails = props => {
             )}
         </>
         <div className="image-headers">
-          <img
+          <img alt={`${movie.movie.original_title}`}
             src={`http://image.tmdb.org/t/p/w185/${movie.movie.poster_path}`}
           />
           <div className="headers">
@@ -100,12 +100,6 @@ export const MovieDetails = props => {
                 <span>{rating[1]}</span>
               </p>
             ) : null}
-            {/* 
-            <p>
-              <span>
-                {movie.movie.vote_average}/10 <i className="fab fa-imdb"></i>
-              </span>
-            </p> */}
             <p>
               <span>
                 {reverseString(movie.moviedetail.release_date).replace(
@@ -156,7 +150,7 @@ export const MovieDetails = props => {
             {casts.map(people => (
               <div key={people.cast_id}>
                 {people.profile_path === null ? (
-                  <img alt="no-image"
+                  <img alt={people.name}
                     className="cast-img"
                     src={`https://res.cloudinary.com/donsjzduw/image/upload/v1580504817/hfjrl5wbkiugy4y0gmqu.jpg`}
                   />
@@ -179,7 +173,7 @@ export const MovieDetails = props => {
                 <>
                   {people.profile_path === null ? (
                     <img
-                      alt="no-image"
+                      alt={people.name}
                       className="dir-img"
                       src={`https://res.cloudinary.com/donsjzduw/image/upload/v1580504817/hfjrl5wbkiugy4y0gmqu.jpg`}
                     />

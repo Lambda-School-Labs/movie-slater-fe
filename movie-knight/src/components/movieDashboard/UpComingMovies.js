@@ -4,10 +4,7 @@ import { getUpcomingMovies } from "../../actions/index.js";
 import Loading from "../Loading.js";
 import { withRouter } from "react-router-dom";
 
-export function UpComingMovies(props) {
-
-
-
+const  UpComingMovies = props => {
 
   useEffect(() => {
     props.getUpcomingMovies();
@@ -61,4 +58,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, { getUpcomingMovies })(UpComingMovies))
+export default connect(mapStateToProps, { getUpcomingMovies })(withRouter(UpComingMovies))

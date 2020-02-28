@@ -3,7 +3,7 @@ import "./dashboard.scss";
 import { withRouter } from "react-router-dom";
 import { toggleNext, toggleNextOff } from "../../actions/index";
 import { connect } from "react-redux";
-import { act } from "react-dom/test-utils";
+// import { act } from "react-dom/test-utils";
 
 function MovieCard(props) {
   let path;
@@ -35,9 +35,9 @@ function MovieCard(props) {
     }
   }, [active]);
 
-  if (props.movieSelect.length > 0 && props.NextButton == false) {
+  if (props.movieSelect.length > 0 && props.NextButton === false) {
     props.toggleNext();
-  } else if (props.movieSelect.length === 0 && props.NextButton == true) {
+  } else if (props.movieSelect.length === 0 && props.NextButton === true) {
     props.toggleNextOff();
   }
 
@@ -51,7 +51,7 @@ function MovieCard(props) {
           data-testid="img"
           src={props.movie.image}
           alt={props.movie.title}
-          onClick={props.movieSelect.length == 3 ? unSelectMovie : toggleClass}
+          onClick={props.movieSelect.length === 3 ? unSelectMovie : toggleClass}
         />
         <p
           onClick={() => props.history.push(`/details/${path}`)}

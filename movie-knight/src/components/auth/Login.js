@@ -5,7 +5,7 @@ import { signUpGoogle } from "../../actions/index";
 
 //Oauth//
 // import ReactDOM from 'react-dom';
-import GoogleLogin, { GoogleLogout } from "react-google-login";
+import GoogleLogin from "react-google-login";
 
 export const Login = props => {
   const [loginInfo, setLogininfo] = useState({ email: "", password: "" });

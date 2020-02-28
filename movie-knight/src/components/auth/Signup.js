@@ -5,7 +5,7 @@ import { signUpGoogle } from "../../actions/index";
 import { withRouter } from "react-router-dom";
 
 //Oauth//
-import GoogleLogin, { GoogleLogout } from "react-google-login";
+import GoogleLogin from "react-google-login";
 
 export function Signup(props) {
 
@@ -38,10 +38,10 @@ export function Signup(props) {
     props.history.push("/");
   };
 
-  const logoutGoogle = () => {
-    localStorage.removeItem("token");
-    props.history.push("/");
-  };
+  // const logoutGoogle = () => {
+  //   localStorage.removeItem("token");
+  //   props.history.push("/");
+  // };
 
   return (
     <div className="signup-com">
@@ -130,16 +130,7 @@ export function Signup(props) {
         </p>{" "}
       </div>
       <div>
-        {/* <button onClick={() => props.history.push("/")} className="guest-button">
-          Continue as guest
-      </button> */}
-
-        {/* <button type="submit" className="next-button" data-testid="signup-btn">
-          Sign Up
-        </button> */}
-
-
-
+  
       </div>
 
     </div>

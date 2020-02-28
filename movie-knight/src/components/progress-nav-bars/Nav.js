@@ -32,6 +32,7 @@ export const Nav = props => {
 
   return localStorage.getItem("token") ? (
     <div className={props.location.pathname !== "/profile" ? null : "noMenu"}>
+      <div className='navbar-fixed'></div>
       <h1 onClick={() => homeButton()} className="app-name">
         Movie<span className="app-name-knight">Knight</span>
       </h1>

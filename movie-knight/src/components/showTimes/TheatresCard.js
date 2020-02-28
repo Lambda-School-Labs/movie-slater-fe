@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { connect, useSelector } from 'react-redux'
+import { connect} from 'react-redux'
 import './showtime.scss'
 import { addfavoriteTheatres, delfavoriteTheatres, getUserById } from '../../actions/index.js'
 import whiteheart from '../images/whiteheart.png'
@@ -13,11 +13,11 @@ const TheatresCard = props => {
     const [isFavorite, setIsFavorite] = useState(false)
     const [firstTime, setFirstTime] = useState(true)
     // console.log(props.getTheater.location)
-    const theatre = props.theatres.filter(thea => thea.theatreId == props.show.id)
+    const theatre = props.theatres.filter(thea => thea.theatreId === props.show.id)
     useEffect(() => {
         let theater
         if (props.userInfo && firstTime) {
-            theater = props.userInfo.theatres.filter(theat => theat.theatreId == props.show.id)
+            theater = props.userInfo.theatres.filter(theat => theat.theatreId === props.show.id)
             setUserTheatre(theater)
             setFirstTime(false)
             if (theater.length > 0)
@@ -49,8 +49,8 @@ const TheatresCard = props => {
 
                 <p>{`${theatre[0].location.address.street}, ${theatre[0].location.address.city}, ${theatre[0].location.address.state}, ${theatre[0].location.address.postalCode}`}</p></div>
             {(localStorage.getItem("googleId") || localStorage.getItem("userId")) ?
-                <div className="hearticon">{isFavorite ? <img src={redheart} onClick={() => delFromFavorite()} /> :
-                    <img src={whiteheart} onClick={() => addToFavorite()} />}
+                <div className="hearticon">{isFavorite ? <img src={redheart} alt='heart-icon' onClick={() => delFromFavorite()} /> :
+                    <img src={whiteheart} alt='heart-icon' onClick={() => addToFavorite()} />}
 
                 </div> : null
 
