@@ -32,11 +32,11 @@ describe("Movie Dashboard", () => {
     expect(details).toBeInTheDocument();
   });
 
-  it("saves selected movie to the redux store", () => {
-    const { getByTestId } = renderWithRedux(<Dashboard />);
-    // render Movie Card now and do on click
-    const next = getByTestId("next-btn");
-  });
+  // it("saves selected movie to the redux store", () => {
+  //   const { getByTestId } = renderWithRedux(<Dashboard />);
+  //   // render Movie Card now and do on click
+  //   const next = getByTestId("next-btn");
+  // });
 });
 
 test.skip("next button appears when user clicks on movie", () => {

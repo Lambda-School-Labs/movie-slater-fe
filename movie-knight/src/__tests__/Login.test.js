@@ -1,81 +1,53 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { Login } from '../components/auth/Login';
-import * as rtl from '@testing-library/react';
-import { shallow, configure, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { login } from "../actions/index";
+import React from "react";
+import { render, fireEvent, cleanup, wait } from "@testing-library/react";
+import { Login } from "../components/auth/Login";
+import { login } from "../actions";
+import { renderWithRedux } from "../StoreFactory";
 
-configure({ adapter: new Adapter() });
+afterEach(cleanup);
 
-it('renders texts', () => {
+test("login renders", () => {
+  const { getByLabelText } = render(<Login />);
+  const emailNode = getByLabelText("Email");
+  const passwordNode = getByLabelText("Password");
+  expect(emailNode).toBeInTheDocument();
+  expect(passwordNode).toBeInTheDocument();
+});
 
-  const wrapper = render(<Login/>);
-  const text1 = wrapper.getByText('Log in to your Movie Knight account');
-  const text2 =  wrapper.getByText('Forgot password?');
-  const text3 = wrapper.getByText('Click here');
+test.skip("calls onSubmit with the username and password when submitted", async () => {
+  // Arrange
+  const history = {
+    push: jest.fn(() => "/")
+  };
+  const handleSubmit = jest.fn();
+  const fakeUser = {
+    email: "test@test.com",
+    password: "test"
+  };
 
-  expect(text1).toBeInTheDocument();
-  expect(text2).toBeInTheDocument();
-  expect(text3).toBeInTheDocument();
+  // render and grab your queries
+  const { container, getByLabelText, getByText } = renderWithRedux(
+    <Login handleSubmit={handleSubmit} login={login} history={history} />
+  );
 
+  // grab the input fields
+  const emailNode = getByLabelText("Email");
+  const passwordNode = getByLabelText("Password");
+  const formNode = container.querySelector("form");
+  const submitButtonNode = getByText("Log In");
+
+  // fill out the fields with fake user
+  emailNode.value = fakeUser.email;
+  passwordNode.value = fakeUser.password;
+
+  // Act
+  fireEvent.submit(formNode);
+  // Simulate.onSubmit(formNode);
+
+  // Assert
+  await wait(() => {
+    expect(handleSubmit).toHaveBeenCalled();
+    expect(handleSubmit).toHaveBeenCalledWith(fakeUser);
+    expect(submitButtonNode.type).toBe("submit");
   });
-
-it('renders form', () => {
-
-  const wrapper = render(<Login/>);
-  const email = wrapper.getByPlaceholderText(/email/i);
-  const password = wrapper.getByPlaceholderText('********');
-
-  expect(email).toBeInTheDocument();
-  expect(password).toBeInTheDocument();
-  
-
-  });
-  
-it('renders input', () => {
-
-  expect(shallow(<Login/>).find('#email').length).toEqual(1)
-  expect(shallow(<Login/>).find('#password').length).toEqual(1)
-
-  })
-
-test('renders form labels', () => {
-
-  const wrapper = render(<Login/>);
-  const emailLabel = wrapper.getByText('Email');
-  const passwordLabel = wrapper.getByText('Password');
-
-  expect(emailLabel).toBeInTheDocument();
-  expect(passwordLabel).toBeInTheDocument();
-
 });
-
-test('email form', () => {
-    
-  const wrapper = render(<Login/>);
-  const input = wrapper.getByTestId("emailform");
-  rtl.fireEvent.change(input, { target: { value: "movieknights@mail.com" }});
-  expect(input.value).toBe("movieknights@mail.com");
-
-});
-
-test('password form', () => {
-    
-  const wrapper = render(<Login/>);
-  const input = wrapper.getByTestId("passwordform");
-  rtl.fireEvent.change(input, { target: { value: "movieknights123" }});
-  expect(input.value).toBe("movieknights123");
-
-});
-
-const history = {
-  push: jest.fn(()=> "/")
-  }
-
-test ("login button", async () => {
-  const wrapper = render(<Login login={login} history={history} />);
-  const button = wrapper.getByTestId("login-btn");
-  rtl.fireEvent.click(button);
-  expect(button).toBeTruthy(); 
-})  
